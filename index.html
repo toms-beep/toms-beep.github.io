@@ -3,99 +3,243 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shuai Wen — Freelance Software Engineer &amp; AI Agent Builder</title>
+<title>Shuai Wen — AI Agent Engineer for SaaS Teams</title>
 <meta name="description" content="Shuai Wen: freelance software engineer with 20 years of experience. I build production LLM / AI agents for SaaS and tech-services teams.">
+<meta name="theme-color" content="#0a0d1a">
 <style>
-:root{--bg:#fff;--fg:#1a1d23;--muted:#5b6270;--accent:#2952e3;--soft:#f4f6fb;--line:#e3e6ee}
+:root{--bg:#0a0d1a;--bg2:#0f1426;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.09);--fg:#eef1fb;--muted:#9aa3bd;--a1:#7c5cff;--a2:#22d3ee;--grad:linear-gradient(120deg,#7c5cff,#22d3ee)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg)}
-a{color:var(--accent)}
-.wrap{max-width:880px;margin:0 auto;padding:0 22px}
-header{border-bottom:1px solid var(--line)}
-nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;flex-wrap:wrap;gap:10px}
-nav .name{font-weight:700;text-decoration:none;color:var(--fg)}
-nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
-nav ul a{text-decoration:none;color:var(--muted);font-size:15px}
-section{padding:64px 0;border-bottom:1px solid var(--line)}
-.hero h1{font-size:clamp(30px,5vw,44px);line-height:1.15;margin-bottom:16px}
-.hero p{color:var(--muted);font-size:19px;max-width:640px}
-h2{font-size:26px;margin-bottom:20px}
-h3{font-size:19px;margin-bottom:8px}
-.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-block;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid var(--accent)}
-.btn.primary{background:var(--accent);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:22px}
-.card p,.muted{color:var(--muted)}
-ul.list{padding-left:20px;margin-top:10px}ul.list li{margin:6px 0}
-.tag{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-footer{padding:28px 0;color:var(--muted);font-size:14px}
+html{scroll-behavior:smooth}
+body{font:17px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(10,13,26,.6);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.logo i{width:28px;height:28px;border-radius:8px;background:var(--grad);display:grid;place-items:center;font-style:normal;font-size:13px;color:#fff}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul a{text-decoration:none;color:var(--muted);font-size:15px;transition:color .2s}
+nav ul a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:16px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn-p{background:var(--grad);color:#fff;box-shadow:0 8px 30px -8px rgba(124,92,255,.7)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 40px -8px rgba(124,92,255,.9)}
+.btn-g{border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.btn-g:hover{background:rgba(255,255,255,.08)}
+.btn-sm{padding:9px 18px;font-size:14px}
+/* hero */
+.hero{position:relative;padding:150px 0 100px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:float 18s ease-in-out infinite;pointer-events:none}
+.b1{width:520px;height:520px;background:#7c5cff;top:-160px;left:-120px}
+.b2{width:460px;height:460px;background:#22d3ee;top:80px;right:-160px;animation-delay:-6s;opacity:.3}
+.b3{width:380px;height:380px;background:#d946ef;bottom:-200px;left:35%;animation-delay:-12s;opacity:.25}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.1)}66%{transform:translate(-40px,30px) scale(.95)}}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 70%);opacity:.5}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--muted);background:rgba(255,255,255,.03);margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+h1{font-size:clamp(36px,5.6vw,62px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin-bottom:22px}
+.lead{font-size:19px;color:var(--muted);max-width:540px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.facts{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap}
+.facts div{font-size:14px;color:var(--muted)}
+.facts b{display:block;font-size:22px;color:var(--fg);letter-spacing:-.02em}
+/* terminal */
+.term{background:rgba(15,20,38,.85);border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(124,92,255,.15);overflow:hidden;font-size:14px}
+.term-top{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.term-top span{width:11px;height:11px;border-radius:50%;background:#3a4058}
+.term-top span:nth-child(1){background:#ff5f57}.term-top span:nth-child(2){background:#febc2e}.term-top span:nth-child(3){background:#28c840}
+.term-top em{margin-left:auto;font-style:normal;font-size:12px;color:var(--muted);border:1px solid var(--line);padding:2px 10px;border-radius:999px}
+.term-body{padding:20px;min-height:380px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:88%;padding:11px 14px;border-radius:12px;line-height:1.5;opacity:0;transform:translateY(8px);transition:all .4s}
+.msg.show{opacity:1;transform:none}
+.msg.user{align-self:flex-end;background:linear-gradient(120deg,rgba(124,92,255,.35),rgba(124,92,255,.2));border:1px solid rgba(124,92,255,.4)}
+.msg.agent{background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.msg.tool{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;color:var(--a2);background:rgba(34,211,238,.06);border:1px dashed rgba(34,211,238,.3);padding:8px 12px}
+.msg small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.msg ul{padding-left:18px;margin-top:4px}
+.typing{display:inline-flex;gap:4px}.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite}.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.term-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+/* sections */
+section{padding:110px 0;position:relative}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;display:inline-block}
+h2{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.03em;margin-bottom:18px;max-width:720px}
+.sub{color:var(--muted);font-size:18px;max-width:640px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .3s,border-color .3s,background .3s;overflow:hidden}
+.card:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.45);background:rgba(255,255,255,.06)}
+.card::before{content:"";position:absolute;inset:-1px;background:radial-gradient(400px circle at var(--x,50%) var(--y,0%),rgba(124,92,255,.15),transparent 40%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(34,211,238,.18));border:1px solid rgba(124,92,255,.35);margin-bottom:18px}
+.ic svg{width:22px;height:22px;stroke:#c9bfff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:19px;margin-bottom:8px;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:15.5px}
+.alt{background:linear-gradient(180deg,transparent,var(--bg2) 15%,var(--bg2) 85%,transparent)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.stack span{padding:7px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--muted);background:rgba(255,255,255,.03)}
+.big{display:grid;gap:16px}
+.big div{padding:24px 28px;border-radius:18px;border:1px solid var(--line);background:var(--card);display:flex;align-items:center;gap:22px}
+.big b{font-size:44px;letter-spacing:-.04em;line-height:1;min-width:92px}
+.big p{color:var(--muted)}
+.big strong{color:var(--fg);display:block}
+/* timeline */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;position:relative}
+.steps::before{content:"";position:absolute;top:27px;left:12%;right:12%;height:2px;background:var(--grad);opacity:.5}
+.step{position:relative;text-align:center;padding:0 10px}
+.num{width:56px;height:56px;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;font-weight:800;font-size:20px;background:var(--bg);border:2px solid transparent;background-image:linear-gradient(var(--bg),var(--bg)),var(--grad);background-origin:border-box;background-clip:padding-box,border-box;position:relative;z-index:1}
+.step .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px;background:rgba(34,211,238,.1);color:var(--a2);margin-bottom:12px}
+.step h3{font-size:21px;margin-bottom:8px}
+.step p{color:var(--muted);font-size:15.5px;max-width:300px;margin:0 auto}
+.who{margin-top:56px;padding:22px 28px;border-radius:16px;border:1px solid var(--line);background:var(--card);display:flex;gap:16px;align-items:center;color:var(--muted)}
+.who b{color:var(--fg)}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+/* cta */
+.cta{text-align:center;border-radius:28px;padding:80px 32px;position:relative;overflow:hidden;border:1px solid rgba(124,92,255,.35);background:radial-gradient(ellipse at top,rgba(124,92,255,.35),transparent 60%),radial-gradient(ellipse at bottom right,rgba(34,211,238,.2),transparent 60%),var(--bg2)}
+.cta h2{margin:0 auto 16px}
+.cta .sub{margin:0 auto}
+.cta .ctas{justify-content:center}
+.mail{margin-top:22px;color:var(--muted);font-size:15px}
+.mail a{color:var(--fg)}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.msg{opacity:1;transform:none}}
+@media (max-width:960px){.hero-in,.about{grid-template-columns:1fr}.cards,.cards.four{grid-template-columns:1fr 1fr}nav ul{display:none}}
+@media (max-width:640px){body{font-size:16px}.hero{padding:120px 0 70px}section{padding:76px 0}.cards,.cards.four,.steps{grid-template-columns:1fr}.steps{gap:40px}.steps::before{display:none}.term-body{min-height:420px}.big b{font-size:34px;min-width:70px}.cta{padding:56px 22px}.who{flex-direction:column;align-items:flex-start}.btn{width:100%;justify-content:center}nav .btn{width:auto}.facts{gap:20px}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><nav>
-<a class="name" href="#">Shuai Wen</a>
-<ul><li><a href="#about">About</a></li><li><a href="#work">Case study</a></li><li><a href="#services">Services</a></li><li><a href="#contact">Contact</a></li></ul>
+<a class="logo" href="#top"><i>SW</i>Shuai Wen</a>
+<ul><li><a href="#capabilities">Case study</a></li><li><a href="#build">What I build</a></li><li><a href="#process">Process</a></li><li><a href="#about">About</a></li></ul>
+<a class="btn btn-p btn-sm" href="mailto:a2459840012@gmail.com?subject=Book%20a%2020-minute%20call">Book a call</a>
 </nav></div></header>
 
-<main>
-<section class="hero"><div class="wrap">
-<span class="tag">Freelance software engineer</span>
-<h1>I build production AI agents for SaaS and tech-services teams.</h1>
-<p>20 years of software engineering, full-stack across mainstream stacks. I help teams without a dedicated AI team ship their first LLM-powered agent: scoped, fixed-price, and built to run in production.</p>
-<div class="btns">
-<a class="btn primary" href="mailto:a2459840012@gmail.com?subject=Book%20a%2020-minute%20call">Book a 20-minute call</a>
-<a class="btn" href="mailto:a2459840012@gmail.com">a2459840012@gmail.com</a>
+<main id="top">
+<section class="hero">
+<div class="gridbg"></div><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="wrap hero-in">
+<div>
+<div class="pill rv"><span class="dot"></span>Freelance · Available for new projects</div>
+<h1 class="rv d1">Ship your first <span class="grad-text">production AI agent</span> in weeks, not quarters.</h1>
+<p class="lead rv d2">I'm Shuai Wen, a full-stack software engineer with 20 years of experience. I design and build LLM-powered agents for SaaS and tech-services teams that don't have a dedicated AI team.</p>
+<div class="ctas rv d3">
+<a class="btn btn-p" href="mailto:a2459840012@gmail.com?subject=Book%20a%2020-minute%20call&amp;body=Hi%20Shuai%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20call.%20A%20few%20times%20that%20work%20for%20me%3A%0A">Book a 20-minute call →</a>
+<a class="btn btn-g" href="mailto:a2459840012@gmail.com?subject=Free%20one-page%20agent%20note">Get a free one-page note</a>
+</div>
+<div class="facts rv d3"><div><b>20 years</b>software engineering</div><div><b>Full-stack</b>mainstream stacks</div><div><b>LLM agents</b>built for production</div></div>
+</div>
+<div class="rv d2">
+<div class="term" aria-label="Illustrative example of the legal assistant agent">
+<div class="term-top"><span></span><span></span><span></span><em>Example interaction · illustrative</em></div>
+<div class="term-body" id="chat"></div>
+</div>
+<p class="term-note">Illustrative demo of the legal assistant agent's workflow — not real client data.</p>
+<!-- OWNER: replace or complement this mock with a real demo video (e.g. Loom/YouTube embed) -->
+</div>
+</div>
+</section>
+
+<section id="capabilities" class="alt"><div class="wrap">
+<span class="eyebrow grad-text rv">Case study</span>
+<h2 class="rv">Legal assistant AI agent</h2>
+<p class="sub rv">An agent I built to support legal work end to end, from research to drafting to review. What it can do:</p>
+<div class="cards">
+<div class="card rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Statute &amp; law lookup</h3><p>Finds the laws and statutes relevant to a question or situation.</p></div>
+<div class="card rv d1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 15l2 2 4-4"/></svg></div><h3>Contract review</h3><p>Reads contracts and flags clauses and issues that deserve attention.</p></div>
+<div class="card rv d2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9.5 9a2.5 2.5 0 1 1 3 2.4V12M12 14.5v.01"/></svg></div><h3>Legal Q&amp;A</h3><p>Answers legal questions in clear, plain language.</p></div>
+<div class="card rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h3>Contract templates</h3><p>Generates contract templates for common agreements.</p></div>
+<div class="card rv d1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0z"/></svg></div><h3>Case analysis</h3><p>Structures the facts, issues and reasoning of a case.</p></div>
+<div class="card rv d2" style="border-style:dashed"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><h3>Your domain next</h3><p>The same patterns — retrieval, tools, structured output — apply to your product and data.</p></div>
+</div>
+<!-- OWNER: add a link to the code or a write-up (GitHub) for this case study if it can be shared -->
+</div></section>
+
+<section id="build"><div class="wrap">
+<span class="eyebrow grad-text rv">What I can build for you</span>
+<h2 class="rv">One focused agent, built for production.</h2>
+<p class="sub rv">Typical first agents I can design and ship for your team:</p>
+<div class="cards four">
+<div class="card rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 18 0v4a2 2 0 0 1-2 2h-1v-6h3M3 12v4a2 2 0 0 0 2 2h1v-6H3"/></svg></div><h3>Support agent</h3><p>Answers customer questions from your docs and data, and hands off to humans when needed.</p></div>
+<div class="card rv d1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div><h3>Ops automation</h3><p>Takes repetitive operational workflows off your team's plate.</p></div>
+<div class="card rv d2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><circle cx="11" cy="14" r="2.5"/><path d="m13 16 2 2"/></svg></div><h3>Document review</h3><p>Reads, checks and extracts what matters from contracts, forms and reports.</p></div>
+<div class="card rv d3"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div><h3>Internal tools</h3><p>AI-powered tools wired into the systems your team already uses.</p></div>
 </div>
 </div></section>
 
-<section id="about"><div class="wrap">
-<h2>About</h2>
-<div class="grid">
-<div class="card"><h3>20 years of engineering</h3><p>Two decades of building and shipping software.</p></div>
-<div class="card"><h3>Full-stack</h3><p>Front end, back end and infrastructure across mainstream stacks.</p></div>
-<div class="card"><h3>LLM / AI agents</h3><p>Designing and building AI agents that use tools, documents and your existing systems.</p></div>
+<section id="process" class="alt"><div class="wrap">
+<span class="eyebrow grad-text rv">How an engagement works</span>
+<h2 class="rv">Simple, scoped, and fixed-price.</h2>
+<div class="steps">
+<div class="step rv"><div class="num">1</div><span class="tag">Free</span><h3>One-page note</h3><p>I send you a short note on where an AI agent could fit in your product or operations.</p></div>
+<div class="step rv d1"><div class="num">2</div><span class="tag">2–4 weeks · fixed price</span><h3>Build your first agent</h3><p>A scoped build of one production agent — support, ops, document review or an internal tool.</p></div>
+<div class="step rv d2"><div class="num">3</div><span class="tag">Optional · monthly</span><h3>Maintenance &amp; retainer</h3><p>Ongoing care after launch: fixes, improvements and new capabilities.</p></div>
 </div>
+<div class="who rv"><div class="ic" style="margin:0;flex:none"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><p><b>Who I work with:</b> SaaS and tech-services teams in the US, UK and Europe that want AI agents in their product but don't have a dedicated AI team.</p></div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+<div>
+<span class="eyebrow grad-text rv">About</span>
+<h2 class="rv">Two decades of engineering, now focused on AI agents.</h2>
+<p class="sub rv">I've spent 20 years building software across the stack. Today I apply that experience to LLM agents — so they're not just demos, but reliable software that fits your existing systems.</p>
+<div class="stack rv"><span>Front end</span><span>Back end</span><span>APIs &amp; integrations</span><span>LLM / AI agents</span></div>
 <!-- OWNER: add your GitHub link here, e.g. <a href="https://github.com/YOUR-USERNAME">GitHub</a> -->
 <!-- OWNER: add your LinkedIn link here, e.g. <a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a> -->
-</div></section>
-
-<section id="work"><div class="wrap">
-<h2>Case study: Legal assistant AI agent</h2>
-<p class="muted">An AI agent that supports legal work across research, drafting and review. Capabilities:</p>
-<div class="grid" style="margin-top:20px">
-<div class="card"><h3>Statute &amp; law lookup</h3><p>Finds relevant laws and statutes for a question or situation.</p></div>
-<div class="card"><h3>Contract review</h3><p>Reads contracts and highlights clauses and issues worth attention.</p></div>
-<div class="card"><h3>Legal Q&amp;A</h3><p>Answers legal questions in plain language.</p></div>
-<div class="card"><h3>Contract templates</h3><p>Generates contract templates for common needs.</p></div>
-<div class="card"><h3>Case analysis</h3><p>Analyses cases and structures the key facts and issues.</p></div>
 </div>
-<!-- OWNER: add a demo video here, e.g. <video src="demo.mp4" controls></video> or a YouTube/Loom link -->
-<!-- OWNER: add a link to the code or a write-up (GitHub) here if it can be shared -->
-</div></section>
-
-<section id="services"><div class="wrap">
-<h2>Services</h2>
-<div class="grid">
-<div class="card"><span class="tag">Free</span><h3>One-page agent note</h3><p>A short, free note on where an AI agent could fit in your product or operations.</p></div>
-<div class="card"><span class="tag">Fixed price · 2–4 weeks</span><h3>Your first production AI agent</h3><p>A scoped build of one agent, for example:</p><ul class="list"><li>Customer support</li><li>Operations</li><li>Document review</li><li>Internal tools</li></ul></div>
-<div class="card"><span class="tag">Optional · monthly</span><h3>Maintenance &amp; retainer</h3><p>Ongoing care after launch: fixes, improvements and new capabilities.</p></div>
+<div class="big">
+<div class="rv"><b class="grad-text">20</b><p><strong>Years of software engineering</strong>Building and shipping software.</p></div>
+<div class="rv d1"><b class="grad-text">Full</b><p><strong>Stack, end to end</strong>Across mainstream stacks.</p></div>
+<div class="rv d2"><b class="grad-text">AI</b><p><strong>LLM agents</strong>Designed and built for real work.</p></div>
 </div>
-<p class="muted" style="margin-top:24px"><strong>Who I work with:</strong> SaaS and tech-services teams in the US, UK and Europe that don't have a dedicated AI team.</p>
 </div></section>
 
 <section id="contact"><div class="wrap">
-<h2>Let's talk</h2>
-<p class="muted">Tell me about your product and I'll reply with a free one-page note on where an agent could help — or book a short call.</p>
-<div class="btns">
-<a class="btn primary" href="mailto:a2459840012@gmail.com?subject=Book%20a%2020-minute%20call&amp;body=Hi%20Shuai%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20call.%20A%20few%20times%20that%20work%20for%20me%3A%0A">Book a 20-minute call</a>
-<a class="btn" href="mailto:a2459840012@gmail.com?subject=Free%20one-page%20agent%20note">Request the free note</a>
+<div class="cta rv">
+<span class="eyebrow grad-text">Let's talk</span>
+<h2>Where could an AI agent help your team?</h2>
+<p class="sub">Book a 20-minute call, or email me about your product and I'll reply with a free one-page note.</p>
+<div class="ctas">
+<a class="btn btn-p" href="mailto:a2459840012@gmail.com?subject=Book%20a%2020-minute%20call&amp;body=Hi%20Shuai%2C%0A%0AI%27d%20like%20to%20book%20a%2020-minute%20call.%20A%20few%20times%20that%20work%20for%20me%3A%0A">Book a 20-minute call →</a>
+<a class="btn btn-g" href="mailto:a2459840012@gmail.com?subject=Free%20one-page%20agent%20note">Request the free note</a>
 </div>
-<p style="margin-top:18px">Email: <a href="mailto:a2459840012@gmail.com">a2459840012@gmail.com</a></p>
+<p class="mail">or email <a href="mailto:a2459840012@gmail.com">a2459840012@gmail.com</a></p>
 <!-- OWNER: optionally replace the call mailto with a scheduling link (e.g. Calendly / Cal.com) -->
+</div>
 </div></section>
 </main>
-<footer><div class="wrap">© Shuai Wen · Freelance software engineer
-<!-- OWNER: add GitHub / LinkedIn footer links here --></div></footer>
+<footer><div class="wrap"><span>© Shuai Wen · Freelance software engineer · AI agents</span><span><a href="mailto:a2459840012@gmail.com">a2459840012@gmail.com</a>
+<!-- OWNER: add GitHub / LinkedIn footer links here --></span></div></footer>
+
+<script>
+(function(){
+document.documentElement.classList.add('js');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){if(el.closest('.hero')||el.getBoundingClientRect().top<innerHeight){setTimeout(function(){el.classList.add('in')},60)}else io.observe(el)});
+document.querySelectorAll('.card').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')})});
+var chat=document.getElementById('chat');
+var script=[
+['user','You',"Review this NDA draft. Anything I should worry about?",900],
+['tool','',"→ contract_review(nda_draft.docx)",900],
+['tool','',"→ statute_lookup(\"confidentiality obligations\")",1100],
+['agent','Legal assistant agent',"Here's a summary of points worth a closer look:<ul><li>Confidentiality term has no clear end date</li><li>Definition of “confidential information” is very broad</li><li>No carve-out for information already public</li></ul>",1600],
+['user','You',"Draft a cleaner version from a template.",1000],
+['tool','',"→ generate_template(\"mutual NDA\")",1000],
+['agent','Legal assistant agent',"Done — a mutual NDA template with a fixed term and standard exclusions is ready for your review.",3200]
+];
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function run(){chat.innerHTML='';var i=0;(function next(){if(i>=script.length){setTimeout(run,reduce?1e9:2500);return}var s=script[i++];var d=document.createElement('div');d.className='msg '+s[0];
+if(s[0]==='agent'&&!reduce){d.innerHTML='<small>'+s[1]+'</small><span class="typing"><i></i><i></i><i></i></span>';chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('show')});setTimeout(function(){d.innerHTML='<small>'+s[1]+'</small>'+s[2];setTimeout(next,s[3])},900)}
+else{d.innerHTML=(s[1]?'<small>'+s[1]+'</small>':'')+s[2];chat.appendChild(d);requestAnimationFrame(function(){d.classList.add('show')});setTimeout(next,reduce?0:s[3])}})()}
+run();
+})();
+</script>
 </body>
 </html>
